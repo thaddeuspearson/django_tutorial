@@ -25,8 +25,8 @@ def health_check(request):
 
 
 urlpatterns = [
-    path("", RedirectView.as_view(url="/polls/", permanent=False)),
     path("health/", health_check),
+    path("", RedirectView.as_view(url="/polls/", permanent=False)),
     path("polls/", include("polls.urls")),
     path('admin/', admin.site.urls),
 ]
