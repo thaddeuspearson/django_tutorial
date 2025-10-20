@@ -125,7 +125,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "/var/www/django_tutorial/static/"
+
+if os.environ.get("CI"):
+    STATIC_ROOT = BASE_DIR / "staticfiles"  # inside project
+else:
+    STATIC_ROOT = "/var/www/django_tutorial/static/"
+
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
