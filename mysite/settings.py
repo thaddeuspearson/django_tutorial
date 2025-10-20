@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     "django-tutorial-env.eba-uj3cjmxh.us-east-1.elasticbeanstalk.com",
     ".elasticbeanstalk.com",
     "172.31.*.*",
-    "127.0.0.1"
+    "127.0.0.1",
 ]
 
 
@@ -87,7 +87,6 @@ DATABASES = {
 }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -124,7 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 if os.environ.get("CI"):
     STATIC_ROOT = BASE_DIR / "staticfiles"  # inside project
