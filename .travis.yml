@@ -3,6 +3,9 @@ language: python
 python:
   - "3.13"
 
+before_install:
+  - pip install --upgrade awsebcli
+
 install:
   - pip install -r requirements.txt
 
@@ -17,3 +20,14 @@ script:
 
 after_script:
   - coveralls
+
+deploy:
+  provider: script
+  script: |
+    eb init django-tutorial \
+      --platform "Python 3.13" \
+      --region $AWS_DEFAULT_REGION
+    eb use django-tutorial-env
+    eb deploy
+  on:
+    branch: main
